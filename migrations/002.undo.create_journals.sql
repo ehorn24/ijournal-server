@@ -1,0 +1,3 @@
+ALTER TABLE journals DROP COLUMN owner;
+
+DROP TABLE IF EXISTS journals;

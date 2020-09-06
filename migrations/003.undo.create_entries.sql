@@ -1,0 +1,5 @@
+ALTER TABLE entries DROP COLUMN owner;
+
+ALTER TABLE entries DROP COLUMN journal;
+
+DROP TABLE IF EXISTS entries;
