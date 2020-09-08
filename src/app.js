@@ -12,6 +12,7 @@ const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
 const userRouter = require("./users/user-router");
 const journalRouter = require("./journals/journal-router");
+const entryRouter = require("./entries/entry-router");
 
 app.use(morgan(morganOption));
 app.use(helmet());
@@ -23,6 +24,7 @@ app.use(
 
 app.use("/api/users", userRouter);
 app.use("/api/journals", journalRouter);
+app.use("/api/entries", entryRouter);
 
 app.get("/", (req, res) => {
   res.send("Hello, world!");
