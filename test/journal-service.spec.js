@@ -25,7 +25,7 @@ describe("Journal endpoints", () => {
     return supertest(app).get("/api/journals/u/10").expect(404);
   });
 
-  it.only("GET /j/:journal_id returns 200 and an array with the journal info", () => {
+  it("GET /j/:journal_id returns 200 and an array with the journal info", () => {
     return supertest(app)
       .get("/api/journals/j/2")
       .expect(200)
