@@ -14,6 +14,9 @@ const JournalService = {
   getJournalById(knex, journal_id) {
     return knex.from("journals").select("*").where({ id: journal_id }).first();
   },
+  editJournal(knex, journal_id, updateItem) {
+    return knex("journals").where({ id: journal_id }).update(updateItem);
+  },
 };
 
 module.exports = JournalService;
