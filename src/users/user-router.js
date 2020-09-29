@@ -32,7 +32,7 @@ userRouter
     }
     UserService.createNewUser(knexInst, newUser)
       .then((user) => {
-        res.status(201).json(user);
+        res.status(201).json("ok");
       })
       .catch(next);
   });
@@ -44,29 +44,31 @@ userRouter.route("/login").post(jsonParser, (req, res, next) => {
   UserService.authUser(knexInst, retUser.username)
     .then((user) => {
       if (!user) {
-        res.status(404).json({ message: `User ${username} does not exist` });
+        res
+          .status(404)
+          .json({ error: { message: `User ${username} does not exist` } });
       } else if (
         user.username === retUser.username &&
         user.password === retUser.password
       ) {
-        res.status(200).json({ message: "Logged in!" });
+        res.status(200).json(user);
       } else {
-        res.status(404).json({ message: "Invalid credentials" });
+        res.status(404).json({ error: { message: "Invalid credentials" } });
       }
       res.end();
     })
     .catch(next);
 });
 
-userRouter.route("/:id").get((req, res, next) => {
+userRouter.route("/username").post(jsonParser, (req, res, next) => {
   const knexInst = req.app.get("db");
-  const id = req.params.id;
-  UserService.getUserById(knexInst, id)
+  const username = req.body.username;
+  UserService.getUserByUsername(knexInst, username)
     .then((user) => {
       if (!user) {
         res
           .status(404)
-          .json({ error: { message: `User with ID ${id} does not exist` } });
+          .json({ error: { message: `User ${username} does not exist` } });
       }
       res.status(200).json(user);
     })

@@ -3,8 +3,12 @@ const UserService = {
     return knex.select("username").from("users");
   },
 
-  getUserById(knex, id) {
-    return knex.from("users").select("*").where({ id }).first();
+  getUserByUsername(knex, username) {
+    return knex
+      .from("users")
+      .select("id", "username", "firstname", "lastname")
+      .where({ username })
+      .first();
   },
 
   createNewUser(knex, newUser) {
