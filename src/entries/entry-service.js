@@ -11,6 +11,9 @@ const EntryService = {
         return entries[0];
       });
   },
+  deleteEntry(knex, id) {
+    return knex("entries").where({ id }).delete();
+  },
 };
 
 module.exports = EntryService;

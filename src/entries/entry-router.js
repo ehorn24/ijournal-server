@@ -37,4 +37,11 @@ entryRouter
       .catch(next);
   });
 
+entryRouter.route("/:entry_id").delete((req, res, next) => {
+  const knexInst = req.app.get("db");
+  EntryService.deleteEntry(knexInst, req.params.entry_id)
+    .then((x) => res.status(204).end())
+    .catch(next);
+});
+
 module.exports = entryRouter;
