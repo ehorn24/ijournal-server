@@ -103,5 +103,30 @@ describe("Users endpoints", () => {
       };
       return supertest(app).post("/api/users/login").send(data).expect(404);
     });
+    it("POST /login returns 200 if the user successfully authenticates", () => {
+      let data = {
+        username: "testuser1",
+        password: "dummypassword",
+      };
+      return supertest(app)
+        .post("/api/users/login")
+        .send(data)
+        .expect(200)
+        .then((res) => {
+          expect(res.body).to.have.all.keys(
+            "id",
+            "username",
+            "firstname",
+            "lastname"
+          );
+        });
+    });
+    it("POST /login returns 404 if credentials are not valid", () => {
+      let data = {
+        username: "testuser1",
+        password: "wrongpassword",
+      };
+      return supertest(app).post("/api/users/login").send(data).expect(404);
+    });
   });
 });
