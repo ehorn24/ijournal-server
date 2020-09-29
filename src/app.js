@@ -16,11 +16,7 @@ const entryRouter = require("./entries/entry-router");
 
 app.use(morgan(morganOption));
 app.use(helmet());
-app.use(
-  cors({
-    origin: CLIENT_ORIGIN,
-  })
-);
+app.use(cors());
 
 app.use("/api/users", userRouter);
 app.use("/api/journals", journalRouter);
