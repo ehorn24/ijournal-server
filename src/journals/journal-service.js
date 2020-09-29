@@ -17,6 +17,9 @@ const JournalService = {
   editJournal(knex, journal_id, updateItem) {
     return knex("journals").where({ id: journal_id }).update(updateItem);
   },
+  deleteJournal(knex, id) {
+    return knex("journals").where({ id }).delete();
+  },
 };
 
 module.exports = JournalService;

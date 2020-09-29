@@ -41,6 +41,12 @@ journalRouter
         })
         .catch(next);
     }
+  })
+  .delete((req, res, next) => {
+    const knexInst = req.app.get("db");
+    JournalService.deleteJournal(knexInst, req.params.journal_id)
+      .then((x) => res.status(204).end())
+      .catch(next);
   });
 
 journalRouter
