@@ -54,7 +54,7 @@ describe("Entry endpoints", () => {
       });
   });
 
-  it.only("DELETE /:entry_id responds with 204 if entry successfully deleted", () => {
+  it("DELETE /:entry_id responds with 204 if entry successfully deleted", () => {
     return supertest(app).delete("/api/entries/3").expect(204);
   });
 });
