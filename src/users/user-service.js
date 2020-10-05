@@ -1,6 +1,6 @@
 const UserService = {
   getAllUsers(knex) {
-    return knex.select("username").from("users");
+    return knex.select("username", "id").from("users");
   },
 
   getUserByUsername(knex, username) {

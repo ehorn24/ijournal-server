@@ -73,13 +73,12 @@ journalRouter
     const newJournal = {
       owner: user_id,
       journal_name: req.body.journal_name,
+      journal_cover: req.body.journal_cover,
     };
-    for (const [key, value] of Object.entries(newJournal)) {
-      if (value == null) {
-        return res
-          .status(400)
-          .json({ error: { message: `Missing ${key} from request body` } });
-      }
+    if (journal_name.length < 0) {
+      return res
+        .status(400)
+        .json({ error: { message: "Journal name is a required field" } });
     }
     JournalService.createNewJournal(knexInst, newJournal)
       .then((journal) => {
