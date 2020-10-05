@@ -35,12 +35,6 @@ userRouter
         res.status(201).json(user);
       })
       .catch(next);
-  })
-  .delete((req, res, next) => {
-    const knexInst = req.app.get("db");
-    UserService.deleteUser(knexInst, req.body.id)
-      .then((x) => res.status(204).end())
-      .catch(next);
   });
 
 userRouter.route("/login").post(jsonParser, (req, res, next) => {
@@ -78,6 +72,13 @@ userRouter.route("/username").post(jsonParser, (req, res, next) => {
       }
       res.status(200).json(user);
     })
+    .catch(next);
+});
+
+userRouter.route("/:user_id").delete((req, res, next) => {
+  const knexInst = req.app.get("db");
+  UserService.deleteUser(knexInst, req.params.user_id)
+    .then((x) => res.status(204).end())
     .catch(next);
 });
 
