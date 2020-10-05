@@ -28,6 +28,10 @@ const UserService = {
       .where({ username })
       .first();
   },
+
+  deleteUser(knex, id) {
+    return knex("users").where({ id }).delete();
+  },
 };
 
 module.exports = UserService;

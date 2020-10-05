@@ -35,6 +35,12 @@ userRouter
         res.status(201).json(user);
       })
       .catch(next);
+  })
+  .delete((req, res, next) => {
+    const knexInst = req.app.get("db");
+    UserService.deleteUser(knexInst, req.body.id)
+      .then((x) => res.status(204).end())
+      .catch(next);
   });
 
 userRouter.route("/login").post(jsonParser, (req, res, next) => {

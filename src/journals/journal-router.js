@@ -57,11 +57,7 @@ journalRouter
     JournalService.getUserJournals(knexInst, user_id)
       .then((journals) => {
         if (journals.length === 0) {
-          res.status(404).json({
-            error: {
-              message: `Either the user with ID ${user_id} does not exist, or they have not created any journals yet`,
-            },
-          });
+          res.json([]);
         }
         res.status(200).json(journals);
       })
@@ -70,12 +66,13 @@ journalRouter
   .post(jsonParser, (req, res, next) => {
     const knexInst = req.app.get("db");
     const user_id = req.params.user_id;
+    console.log(req.body);
     const newJournal = {
       owner: user_id,
       journal_name: req.body.journal_name,
       journal_cover: req.body.journal_cover,
     };
-    if (journal_name.length < 0) {
+    if (newJournal.journal_name.length < 0) {
       return res
         .status(400)
         .json({ error: { message: "Journal name is a required field" } });
