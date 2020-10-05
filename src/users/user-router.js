@@ -32,7 +32,7 @@ userRouter
     }
     UserService.createNewUser(knexInst, newUser)
       .then((user) => {
-        res.status(201).json("ok");
+        res.status(201).json(user);
       })
       .catch(next);
   });
