@@ -1,26 +1,30 @@
-# Express Boilerplate!
+Welcome to iJournal!
 
-This is a boilerplate project used for starting new projects!
+iJournal is an online journaling app. In their unique account, users can create journals with custom titles and covers, as well as entries to go in them. Each entry has a custom title and the option to add tags about the entry's subject(s). Users can search for entries by journal, month, year and tags.
 
-## Set up
+Live app: https://ijournal.vercel.app/
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+Technology used: HTML, CSS, React, JavaScript, Node, Express, PostgreSQL
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+Screenshots of iJournal:
 
-## Scripts
+Landing page
+![Landing Page](https://i.imgur.com/DU8om7A.png)
 
-Start the application `npm start`
+Home page
+![Home Page](https://i.imgur.com/VjfyDmO.png)
 
-Start nodemon for the application `npm run dev`
+Display entries in a journal
+![Display entries](https://i.imgur.com/Eovi7A3.png)
 
-Run the tests `npm test`
+Filter example: Entries written in 2020
+![Filter for Entries](https://i.imgur.com/vQep1iZ.png)
 
-## Deploying
+Create a new journal
+![Create new journal](https://i.imgur.com/WIXr0Od.png)
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+Edit an existing journal
+![Edit a journal](https://i.imgur.com/YVXrciv.png)
+
+Create a new entry
+![Create an entry](https://i.imgur.com/OiV2q3G.png)
