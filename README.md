@@ -6,6 +6,41 @@ Live app: https://ijournal.vercel.app/
 
 Technology used: HTML, CSS, React, JavaScript, Node, Express, PostgreSQL
 
+API Documentation:
+/api
+
+```
+.
+├── /users
+│   └── GET
+│     ├── /
+│   └── POST
+│     ├── /
+│     └── /login
+│     └── /username
+│   └── DELETE
+│     ├── /:user_id
+│
+├── /journals
+│   └── GET
+│     ├── /j/:journal_id
+│     ├── /u/:user_id
+│   └── POST
+│     ├── /u/:user_id
+│   └── PATCH
+│     ├── /j/:journal_id
+│   └── DELETE
+│     ├── /j/:journal_id
+│
+├── /entries
+│   └── GET
+│     ├── /u/:user_id
+│   └── POST
+│     ├── /u/:user_id
+│   └── DELETE
+│     ├── /:entry_id
+```
+
 Screenshots of iJournal:
 
 Landing page
