@@ -48,14 +48,241 @@ HTML, CSS, React, JavaScript, Node, Express, PostgreSQL
 │     ├── /:entry_id
 ```
 
-##### GET **/api/users/**
+#### User Endpoints - /api/users
+
+##### GET /
+
+Gets all users in the database
 
 ```
 //res.body
-{
-  username: String,
-  id:  Integer
-}
+  [
+    {
+      username: String,
+      id: Number
+    }
+  ]
+```
+
+##### POST /
+
+Creates a new user
+
+```
+//req.body
+  {
+    username: String,
+    password: String,
+    firstname: String,
+    lastname: String
+  }
+//res.body
+  {
+    id: Number,
+    username: String,
+    firstname: String,
+    lastname: String
+  }
+```
+
+##### POST /login
+
+Authenticates existing user
+
+```
+//req.body
+  {
+    username: String,
+    password: String
+  }
+//res.body
+  {
+    username: String
+  }
+```
+
+##### POST /username
+
+Gets info for a specific user
+
+```
+//req.body
+  {
+    username: String
+  }
+//res.body
+  {
+    id: Number,
+    username: String,
+    firstname: String,
+    lastname: String
+  }
+```
+
+#### Journal Endpoints - /api/journals
+
+##### GET /j/:journal_id
+
+Get info for a specific journal
+
+```
+//req.params
+  {
+    journal_id: journal_id
+  }
+//res.body
+  {
+    id: Number,
+    owner: Number,
+    journal_name: String,
+    date_created: String,
+    journal_cover: String
+  }
+```
+
+##### PATCH /j/:journal_id
+
+Edits a journal's name or cover image
+
+```
+//req.params
+  {
+    journal_id: journal_id
+  }
+//req.body
+  {
+    journal_name: String,
+    journal_cover: String
+  }
+//res.body - none
+```
+
+##### DELETE /j/:journal_id
+
+Deletes a journal
+
+```
+//req.params
+  {
+    journal_id: journal_id
+  }
+//req.body - none
+//res.body - none
+```
+
+##### GET /u/:user_id
+
+Gets all journals for a specific user
+
+```
+//req.params
+  {
+    user_id: user_id
+  }
+//req.body - none
+//res.body
+  [
+    {
+      id: Number,
+      owner: Number,
+      journal_name: String,
+      date_created: String,
+      journal_cover: String
+    }
+  ]
+```
+
+##### POST /u/:user_id
+
+Create a new journal
+
+```
+//req.params
+  {
+    owner: user_id
+  }
+//req.body
+  {
+    journal_name: String,
+    journal_cover: String
+  }
+//res.body
+  {
+    id: Number,
+    owner: Number,
+    journal_name: String,
+    date_created: String,
+    journal_cover: String
+  }
+```
+
+#### Entry Endpoints - /api/entries
+
+##### GET /u/:user_id
+
+Get all entries for a user
+
+```
+//req.params
+  {
+    owner: user_id
+  }
+//res.body
+  [
+    {
+      id: Number,
+      owner: Number,
+      journal: Number,
+      date_created: String,
+      entry_title: String,
+      tags: [
+        tag,
+        tag,
+        tag
+      ],
+      entry_text: String
+    }
+  ]
+```
+
+##### POST /u/:user_id
+
+Create a new entry
+
+```
+//req.params
+  {
+    owner: user_id
+  }
+//req.body
+  {
+    journal, entry_title, tags, entry_text
+  }
+//res.body
+  {
+    id: Number,
+    owner: Number,
+    journal: Number,
+    date_created: String,
+    entry_title: String,
+    tags: [
+      tag,
+      tag,
+      tag
+    ],
+    entry_text: String
+  }
+```
+
+##### DELETE /:entry_id
+
+Delete an entry
+
+```
+//req.params
+  {
+    entry_id: entry_id
+  }
 ```
 
 Screenshots of iJournal:
@@ -80,3 +307,7 @@ Edit an existing journal
 
 Create a new entry
 ![Create an entry](https://i.imgur.com/OiV2q3G.png)
+
+```
+
+```

@@ -66,7 +66,6 @@ journalRouter
   .post(jsonParser, (req, res, next) => {
     const knexInst = req.app.get("db");
     const user_id = req.params.user_id;
-    console.log(req.body);
     const newJournal = {
       owner: user_id,
       journal_name: req.body.journal_name,
