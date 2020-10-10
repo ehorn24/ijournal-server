@@ -1,17 +1,20 @@
-#Welcome to iJournal!
+# Welcome to iJournal!
 
 iJournal is an online journaling app. In their unique account, users can create journals with custom titles and covers, as well as entries to go in them. Each entry has a custom title and the option to add tags about the entry's subject(s). Users can search for entries by journal, month, year and tags.
 
-###Live app
+### Live app
+
 https://ijournal.vercel.app/
 
-###Technology used
+### Technology used
+
 HTML, CSS, React, JavaScript, Node, Express, PostgreSQL
 
-###API Documentation
+### API Documentation
+
 /api
 
-####API Overview
+#### API Overview
 
 ```
 .
@@ -45,7 +48,7 @@ HTML, CSS, React, JavaScript, Node, Express, PostgreSQL
 │     ├── /:entry_id
 ```
 
-#####GET **/api/users/**
+##### GET **/api/users/**
 
 ```
 //res.body
