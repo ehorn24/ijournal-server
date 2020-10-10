@@ -15,7 +15,7 @@ const UserService = {
     return knex
       .insert(newUser)
       .into("users")
-      .returning("username", "firstname", "lastname", "id")
+      .returning("*")
       .then((users) => {
         return users[0];
       });
